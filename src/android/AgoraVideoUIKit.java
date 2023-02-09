@@ -92,7 +92,8 @@ public class AgoraVideoUIKit extends CordovaPlugin {
                 activity.addContentView(agView, new FrameLayout.LayoutParams(
                         FrameLayout.LayoutParams.MATCH_PARENT,
                         FrameLayout.LayoutParams.MATCH_PARENT));
-                try{
+                try {
+                    // TODO: Check permissions then request join channel.
                     joinChannel();
                     String str = "appId::" +  appId +  " token::" + token;
                     callbackContext.success(str);
@@ -106,29 +107,6 @@ public class AgoraVideoUIKit extends CordovaPlugin {
             };
         };
         this.cordova.getActivity().runOnUiThread(runnable);
-        // Check permission and join a channel
-        // if (DevicePermissionsKt.requestPermissions(AgoraVideoViewer.Companion, this))
-        // {
-        // joinChannel();
-        // callbackContext.success(message);
-        // } else {
-        // Button joinButton = new Button(this);
-        // joinButton.setText("Allow camera and microphone access, then click here");
-        // joinButton.setOnClickListener(new View.OnClickListener() {
-        // // When the button is clicked, check permissions again and join channel
-        // @Override
-        // public void onClick(View view) {
-        // if (DevicePermissionsKt.requestPermissions(AgoraVideoViewer.Companion,
-        // getApplicationContext())) {
-        // ((ViewGroup) joinButton.getParent()).removeView(joinButton);
-        // joinChannel();
-        // callbackContext.success(message);
-        // }
-        // }
-        // });
-        // this.addContentView(joinButton, new
-        // FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, 200));
-        // }
     }
 
     public void joinChannel() {
