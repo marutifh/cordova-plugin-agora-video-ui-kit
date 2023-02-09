@@ -1,0 +1,23 @@
+{
+  "name": "cordova-plugin-agora-video-ui-kit",
+  "version": "1.0.0",
+  "description": "Cordova-Agora-Video-UI-Kit",
+  "cordova": {
+    "id": "cordova-plugin-agora-video-UI-kit",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marutifh/cordova-plugin-msal-intune.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "Maruti",
+  "license": "ISC"
+}

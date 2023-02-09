@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-agora-video-UI-kit" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>AgoraVideoUIKit</name>
+    <js-module name="AgoraVideoUIKit" src="www/AgoraVideoUIKit.js">
+        <clobbers target="cordova.plugins.AgoraVideoUIKit" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="AgoraVideoUIKit">
+                <param name="android-package" value="com.marutifh.agoravideo.AgoraVideoUIKit" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml" >
+            <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.RECORD_AUDIO" />
+            <uses-permission android:name="android.permission.CAMERA" />
+            <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+            <!-- The Agora SDK requires Bluetooth permissions in case users are using Bluetooth devices. -->
+            <uses-permission android:name="android.permission.BLUETOOTH" />
+            <!-- For Android 12 and above devices, the following permission is also required. -->
+            <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+        </config-file>
+        <source-file src="src/android/AgoraVideoUIKit.java" target-dir="src/com/marutifh/agoravideo/AgoraVideoUIKit" />
+        <framework src="src/android/build-extras.gradle" custom="true" type="gradleReference" />
+    </platform>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="AgoraVideoUIKit">
+                <param name="ios-package" value="AgoraVideoUIKit" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/AgoraVideoUIKit.swift" />
+        <podspec>
+            <config>
+                <source url="https://github.com/CocoaPods/Specs.git"/>
+            </config>
+            <pods use_frameworks="true">
+                <pod name="AgoraUIKit_iOS" spec="4.0.6"/>
+            </pods>
+        </podspec>
+    </platform>
+</plugin>
