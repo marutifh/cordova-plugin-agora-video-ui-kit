@@ -5,10 +5,10 @@ exports.coolMethod = function (arg0, success, error) {
 };
 
 exports.initializeAndJoinChannel = function (options, success, error) {
-    if (!options.appId || !options.token || !options.channelName) {
+    if (!options.appId || !options.token || !options.channelName || !options.uid) {
         error("Mandatory fields are missing!");
         return;
     }
-    var args = [options.appId, options.token, options.channelName];
+    var args = [options.appId, options.token, options.channelName, options.uid];
     exec(success, error, 'AgoraVideoUIKit', 'initializeAndJoinChannel', args);
 };

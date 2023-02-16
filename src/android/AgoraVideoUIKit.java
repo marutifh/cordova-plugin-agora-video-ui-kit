@@ -46,6 +46,7 @@ public class AgoraVideoUIKit extends CordovaPlugin {
 
     // Fill the temp token generated on Agora Console.
     private String token = "";
+    private Integer uid = 555;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -59,6 +60,7 @@ public class AgoraVideoUIKit extends CordovaPlugin {
             this.appId = args.getString(0);
             this.token = args.getString(1);
             this.channelName = args.getString(2);
+            this.uid = args.getInt(3);
             this.initializeAndJoinChannel(callbackContext);
             return true;
         }
@@ -110,6 +112,6 @@ public class AgoraVideoUIKit extends CordovaPlugin {
     }
 
     public void joinChannel() {
-        agView.join(channelName, token, Constants.CLIENT_ROLE_BROADCASTER, 0);
+        agView.join(channelName, token, Constants.CLIENT_ROLE_BROADCASTER, uid);
     }
 }

@@ -21,9 +21,10 @@ import AgoraUIKit
             let appIda = command.arguments[0] as? String
             let tokena = command.arguments[1] as? String
             let channelNamea = command.arguments[2] as? String
-            if let appid = appIda, let tkn = tokena, let cn = channelNamea {
+            let uida = command.arguments[3] as? UInt
+            if let appid = appIda, let tkn = tokena, let cn = channelNamea, let uid = uida {
                 if appid != "" && tkn != "" && cn != "" {
-                    let av: AgoraVideo = AgoraVideo(appId: appid, token:tkn, channelName:cn)
+                    let av: AgoraVideo = AgoraVideo(appId: appid, token:tkn, channelName:cn, uid: uid)
                     self.viewController?.show(av, sender: self)
                 }
             }
@@ -38,16 +39,18 @@ class AgoraVideo: UIViewController {
     var appId: String = ""
     var token: String? = ""
     var channelName: String = ""
+    var uid: UInt;
     var agoraView: AgoraVideoViewer!
     convenience init() {
             self.init()
         }
-    init(appId: String, token: String, channelName: String) {
+    init(appId: String, token: String, channelName: String, uid: UInt) {
             print("convenience Init")
-                self.appId = appId
-                self.token = token
-                self.channelName = channelName
-        super.init(nibName: nil, bundle: nil)
+            self.appId = appId
+            self.token = token
+            self.channelName = channelName
+            self.uid = uid
+            super.init(nibName: nil, bundle: nil)
         }
     
     required init?(coder: NSCoder) {
@@ -56,7 +59,7 @@ class AgoraVideo: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        videoView(appId: self.appId, token: self.token as? String ?? "", channelName: self.channelName)
+        videoView(appId: self.appId, token: self.token as? String ?? "", channelName: self.channelName, uid: self.uid)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -65,7 +68,7 @@ class AgoraVideo: UIViewController {
         agoraView.exit()
     }
     
-    func videoView(appId: String, token: String, channelName: String)
+    func videoView(appId: String, token: String, channelName: String, uid: UInt)
         {
 //            let appId1 = "2214583653f34a8ea2dcafca28ce2165"
 //            let token1 = "007eJxTYNC8ULHONT5M6tCjQ0cunPWvZLhc1/q4JeTz2+8aeb4fPqorMBgZGZqYWhibmRqnGZskWqQmGqUkJ6YlJxpZJKcaGZqZsj14ktwQyMiwObyWhZEBAkF8FoaS1OISBgYACgIiMQ=="
@@ -91,11 +94,11 @@ class AgoraVideo: UIViewController {
 //            )
             
             self.agoraView.fills(view: self.view)
-            
             let status = self.agoraView.join(
                 channel: channelName,
                 with: token,
-                as: .broadcaster
+                as: .broadcaster,
+                uid: uid
             )
             
 //            let status = self.agoraView.join(
