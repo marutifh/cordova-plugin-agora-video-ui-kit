@@ -1,1 +1,1 @@
-# cordova-plugin-agora-video-ui-kit
+# cordova plugin agora videoUI kit
