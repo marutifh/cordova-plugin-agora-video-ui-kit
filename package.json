@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-agora-video-ui-kit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Cordova-Agora-Video-UI-Kit",
   "cordova": {
     "id": "cordova-plugin-agora-video-UI-kit",
