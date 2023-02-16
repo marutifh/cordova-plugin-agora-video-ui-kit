@@ -16,7 +16,11 @@
   "keywords": [
     "ecosystem:cordova",
     "cordova-android",
-    "cordova-ios"
+    "cordova-ios",
+    "agora",
+    "agora-video",
+    "agora-video-UI-kit",
+    "agora VideoUIKit"
   ],
   "author": "Maruti",
   "license": "ISC"
