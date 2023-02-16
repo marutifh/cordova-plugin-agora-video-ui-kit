@@ -27,7 +27,7 @@ var param = {
 	uid: 0, // User ID in integer
 	appId: "Agora AppID",
 	token: "Token generated from Agora",
-	channelName: "channel name used"
+	channelName: "channel name"
 };
 
 cordova.plugins.AgoraVideoUIKit.initializeAndJoinChannel(
